@@ -1,0 +1,48 @@
+
+public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private CustomAdapter customAdapter;
+    private List<NewsModel> newsList;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        recyclerView = (RecyclerView)findViewById(R.id.recycle);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        newsList = new ArrayList<>();
+
+        customAdapter = new CustomAdapter(newsList);
+        recyclerView.setAdapter(customAdapter);
+        setData();
+
+
+    }
+
+    private void setData() {
+
+        // first approach
+
+        /* NewsModel newsModel  = new NewsModel();
+         newsModel.Title = "First Title ";
+         newsModel.Desc = "This is first title ";
+         newsList.add(newsModel);
+        NewsModel newsModel1  = new NewsModel();
+        newsModel1.Title = "Second Title ";
+        newsModel1.Desc = "This is second title ";
+        newsList.add(newsModel1);
+*/
+        // Second Approach
+
+        News news = new News("First Title","This is first title");
+        NewsModel newsModel = new NewsModel(news);
+        newsList.add(newsModel);
+
+        News news1 = new News("Second Title","This is second title");
+        NewsModel newsModel1 = new NewsModel(news1);
+        newsList.add(newsModel1);
+
+
+    }
+}
